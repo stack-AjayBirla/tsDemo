@@ -1,30 +1,37 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {SafeAreaView, View, Text, StyleSheet, TextInput} from 'react-native';
-import CostomButton from '../../component/costomButton';
+import {SafeAreaView, View, Text, StyleSheet} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import CustomButton from '../../component/customButton';
+import CustomTextButton from '../../component/customTextButton';
+import CustomInput from '../../navigation/CustomInput';
 
 const SignIn = () => {
+  const Navigation = useNavigation();
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.inputContainer}>
         <Text style={styles.headerText}>LOGIN</Text>
-        <Text style={styles.inputTitle}>USER-ID</Text>
-        <TextInput
-          placeholder="userId"
-          style={styles.input}
-          placeholderTextColor="white"
+        <CustomInput
+          placeholder={'Please Enter Your Userid'}
+          title={'USER-ID'}
         />
-        <Text style={styles.inputTitle}>PASSWORD</Text>
-        <TextInput
-          placeholder="userId"
-          style={styles.input}
-          placeholderTextColor="white"
+        <CustomInput
+          placeholder={'Please Enter Your Password'}
+          title={'PASSWORD'}
         />
-        <CostomButton
+        <CustomButton
           title="LOGIN"
           buttonStyle={styles.button}
-          onPress={undefined}
-          buttonText={undefined}
+          onPress={() => Navigation.navigate('BottomTabNavigatore')}
         />
+        <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+          <Text style={{color: 'black', margin: 5}}>NEW-USER ?</Text>
+          <CustomTextButton
+            title="Sign-up"
+            onPress={() => Navigation.navigate('SignUp')}
+          />
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -32,7 +39,7 @@ const SignIn = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'green',
+    backgroundColor: '#357840',
     justifyContent: 'center',
   },
   headerText: {
@@ -48,25 +55,12 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     borderRadius: 15,
   },
-  input: {
-    margin: 10,
-    borderRadius: 10,
-    height: 50,
-    backgroundColor: 'red',
-    padding: 10,
-  },
-  inputTitle: {
-    fontSize: 18,
-    fontWeight: '500',
-    color: 'red',
-    marginLeft: 15,
-    marginTop: 10,
-  },
   button: {
     height: 50,
     marginHorizontal: '20%',
     marginVertical: 15,
     borderRadius: 25,
+    backgroundColor:'#357840',
   },
 });
 export default SignIn;

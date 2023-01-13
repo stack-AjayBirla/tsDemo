@@ -4,12 +4,12 @@ import {View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native';
 
 interface Props {
   title: string;
-  onPress: any;
-  buttonStyle: any;
-  buttonText: any;
+  onPress?: any;
+  buttonStyle?: any;
+  buttonText?: any;
 }
 
-const CostomButton = (props: Props) => {
+const CustomButton = (props: Props) => {
   const {title, onPress, buttonStyle, buttonText} = props;
   return (
     <View>
@@ -33,4 +33,4 @@ const Styles = StyleSheet.create({
   },
 });
 
-export default CostomButton;
+export default CustomButton;

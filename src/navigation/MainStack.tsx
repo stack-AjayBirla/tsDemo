@@ -12,6 +12,7 @@ import BottomTabNavigatore from './BottomTabNavigatore';
 import ProductDetail from '../screens/ProductDetail';
 import MapScreen from '../screens/MapScreen';
 import SignIn from '../screens/user/SignIn';
+import SingUp from '../screens/user/SingUp';
 
 export type stackParam = {
   Home: undefined;
@@ -66,6 +67,11 @@ const MainStack: React.FC<Props> = () => {
          <Stack.Screen
           name="SignIn"
           component={SignIn}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="SignUp"
+          component={SingUp}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

@@ -11,7 +11,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import CostomButton from '../component/costomButton';
+import CostomButton from '../component/customButton';
 import Header from '../component/Header';
 import {useDispatch, useSelector} from 'react-redux';
 import {addItemToCart} from '../redux/AddToCartActions';
