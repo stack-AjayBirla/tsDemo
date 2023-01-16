@@ -13,13 +13,15 @@ import ProductDetail from '../screens/ProductDetail';
 import MapScreen from '../screens/MapScreen';
 import SignIn from '../screens/user/SignIn';
 import SingUp from '../screens/user/SingUp';
+import ChooseLocation from '../screens/ChooseLocation';
 
 export type stackParam = {
   Home: undefined;
   Cart: undefined;
   BottomTabBar: undefined;
   ProfileScreen: undefined;
-  ProductDetail:undefined;
+  ProductDetail: undefined;
+  name: rootName;
 };
 
 const Stack = createNativeStackNavigator<stackParam>();
@@ -27,6 +29,7 @@ const Stack = createNativeStackNavigator<stackParam>();
 interface Props {
   name: string;
   component: any;
+  initialRouteName?: keyof stackParam | undefined;
 }
 
 const MainStack: React.FC<Props> = () => {
@@ -59,12 +62,12 @@ const MainStack: React.FC<Props> = () => {
           component={ProductDetail}
           options={{headerShown: false}}
         />
-         <Stack.Screen
+        <Stack.Screen
           name="MapScreen"
           component={MapScreen}
           options={{headerShown: false}}
         />
-         <Stack.Screen
+        <Stack.Screen
           name="SignIn"
           component={SignIn}
           options={{headerShown: false}}
@@ -72,6 +75,11 @@ const MainStack: React.FC<Props> = () => {
         <Stack.Screen
           name="SignUp"
           component={SingUp}
+          options={{headerShown: false}}
+        />
+         <Stack.Screen
+          name="ChooseLoction"
+          component={ChooseLocation}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

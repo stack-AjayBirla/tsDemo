@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable no-sequences */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, {useState} from 'react';
+import React, {FC, useState} from 'react';
 import {SafeAreaView, View, Text, StyleSheet, Alert} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import CustomButton from '../../component/customButton';
@@ -18,20 +19,26 @@ interface Props {
 type singUpnavigationType = NativeStackNavigationProp<stackParam, 'SignIn'>;
 const SignUp: React.FC<Props> = () => {
   const [email, setEmail] = useState<string | null>('');
-  const [password, setPassword] = useState<string | null>('');
+  const [password, setPassword] = useState<string | null | boolean>('');
   const [name, setName] = useState<string>('');
+  const [confirmPass, setConfirmPass] = useState<string | null | boolean>('');
   const Navigation = useNavigation();
 
-  const _handleSignUp = () => {
-    if (email === '' || password === '' || name === '') {
+  const _handleSignUp: React.FC<singUpnavigationType> = () => {
+    if (
+      email === '' ||
+      password === '' ||
+      name === '' ||
+      confirmPass === !password
+    ) {
       Alert.alert('please fill field');
     } else {
-      let user = 'password';
-      'name', 'email';
+      let userName = name,
+        email;
 
-      storeData('user_data', JSON.stringify(user));
+      storeData('user_Name', JSON.stringify(userName));
       Navigation.navigate('SignIn');
-      console.log('user', user);
+      console.log('user', userName);
     }
   };
   return (
@@ -56,6 +63,7 @@ const SignUp: React.FC<Props> = () => {
         <CustomInput
           placeholder={'Please Canfirm Password'}
           title={'CONFIRM-PASSWORD'}
+          onChangeText={text => setConfirmPass(text)}
         />
         <CustomButton
           title="SIGN-UP"
